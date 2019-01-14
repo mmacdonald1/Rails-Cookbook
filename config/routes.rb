@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login'
   get '/logout', to: 'users#logout'
   get "/recipes/:id/add_recipe", to: 'recipes#add_recipe'
+  get "/recipes/:id/delete_recipe", to: 'recipes#delete_recipe'
   resources :recipes
   resources :users
 
