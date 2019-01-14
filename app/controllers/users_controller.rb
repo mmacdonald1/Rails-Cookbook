@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update]
-  before_action :require_login, only: [:edit]
+  before_action :require_login, only: [:show, :edit]
 
   def index
     if session[:user_id]
@@ -44,13 +44,8 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     redirect_to users_path
   end
+
   private
-  def require_login
-    @user = User.find_by(id: session[:user_id])
-    if !@user
-      head :unauthorized
-    end
-  end
   def find_user
     @user = User.find(params[:id])
   end
