@@ -2,8 +2,8 @@
 
 <%= @user.username %>
 <ul>
-<% @user.recipes.each do |recipe| %>
-    <li><%= link_to recipe.name, recipe %></li>
+<% @user.lists.each do |list| %>
+    <li><%= link_to list.name, list %></li>
 <% end %>
 </ul>
 

@@ -7,14 +7,14 @@ class RecipesController < ApplicationController
   def show
   end
   def add_recipe
-    @user= User.find_by(id: session[:user_id])
-    @user.recipes << @recipe
+    @list= List.find_by(id: params[:list_id])
+    @list.recipes << @recipe
     redirect_to "/recipes/#{@recipe.id}"
   end
   def delete_recipe
-    @user= User.find_by(id: session[:user_id])
-    UserRecipe.find_by(user_id: @user.id, recipe_id: params[:id]).destroy
-    redirect_to "/users/#{@user.id}"
+    @list= List.find_by(id: params[:list_id])
+    ListRecipe.find_by(list_id: @list.id, recipe_id: params[:id]).destroy
+    redirect_to "/lists/#{@list.id}"
   end
   private
   def find_recipe
