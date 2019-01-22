@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   before_action :require_login
   before_action :find_recipe, only: [:show, :edit, :update, :add_recipe]
+  before_action :find_user, only: [:index, :show]
   def index
     @recipes = Recipe.all
   end
@@ -37,6 +38,9 @@ class RecipesController < ApplicationController
   private
   def find_recipe
     @recipe =  Recipe.find(params[:id])
+  end
+  def find_user
+    @user = User.find(session[:user_id])
   end
   def recipe_params
     params.require(:recipe).permit(:name, :recipe, :ingredients, :time)
