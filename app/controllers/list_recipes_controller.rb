@@ -1,7 +1,7 @@
 class ListRecipesController < ApplicationController
   before_action :require_login
-  before_action :find_list_recipe, only: [:show, :edit, :update]
-  def index
+  before_action :find_list_recipe, only: [:show]
+
   def index
     @list_recipes= ListRecipe.all
   end
@@ -11,15 +11,8 @@ class ListRecipesController < ApplicationController
     @list_recipe =  ListRecipe.new
   end
   def create
-    byebug
-    @list_recipe = ListRecipe.create(recipe_id: params[:recipe_id], user_id: session[:user_id])
+    @list_recipe = ListRecipe.create(recipe_id: params[:recipe_id], list_id:  params[:list][:list_id])
     redirect_to @user
-  end
-  def edit
-  end
-  def update
-    @list_recipe.update(name: params[:list_recipe][:name], user_id: session[:user_id])
-    redirect_to @list_recipe
   end
   def destroy
     ListRecipe.find(params[:id]).destroy
