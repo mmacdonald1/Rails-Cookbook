@@ -2,3 +2,14 @@
 <%= @recipe.time %>
 <%= @recipe.ingredients %>
 <%= @recipe.recipe %>
+
+
+<%= form_tag list_recipe do |f| %>
+  <%= f.hidden_field :recipe_id, value: "#{@recipe.id}" %>
+  <%= f.collection_select :list_ids, List.where(id: session[:user_id]), :id, :name %>
+  <%= f.submit :'Add Recipe to List' %>
+<% end %>
+
+
+<%= link_to "Edit Recipe", edit_recipe_path %>
+<%= link_to "Delete Recipe", @recipe, method: :delete %>
