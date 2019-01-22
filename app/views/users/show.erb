@@ -1,13 +1,16 @@
-<h1> Profile for: </h1>
+<%= render 'shared/navbar'%>
+<div class= "container">
+  <h1> Profile for: </h1>
 
-<%= @user.username %>
-<%= link_to "Create List", new_list_path %>
-<ul>
-<% @user.lists.each do |list| %>
-    <li><%= link_to list.name, list %></li>
-<% end %>
-</ul>
+  <%= @user.username %>
+  <%= link_to "Create List", new_list_path %>
+  <ul>
+  <% @user.lists.each do |list| %>
+      <li><%= link_to list.name, list %></li>
+  <% end %>
+  </ul>
 
-<%= link_to "Edit User", edit_user_path %>
-<%= link_to "Find New Recipes", recipes_path %>
-<%= link_to "Logout", '/logout' %>
+  <%= link_to "Edit User", edit_user_path %>
+  <%= link_to "Find New Recipes", recipes_path %>
+  <%= link_to "Logout", '/logout' %>
+</div>
