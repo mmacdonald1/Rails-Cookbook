@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_30_182304) do
+ActiveRecord::Schema.define(version: 2019_01_14_225332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "list_recipes", force: :cascade do |t|
+    t.bigint "recipe_id"
+    t.bigint "list_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_list_recipes_on_list_id"
+    t.index ["recipe_id"], name: "index_list_recipes_on_recipe_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_lists_on_user_id"
+  end
 
   create_table "recipes", force: :cascade do |t|
     t.string "name"
@@ -24,22 +41,14 @@ ActiveRecord::Schema.define(version: 2018_10_30_182304) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "user_recipes", force: :cascade do |t|
-    t.bigint "recipe_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_user_recipes_on_recipe_id"
-    t.index ["user_id"], name: "index_user_recipes_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
+    t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "user_recipes", "recipes"
-  add_foreign_key "user_recipes", "users"
+  add_foreign_key "list_recipes", "lists"
+  add_foreign_key "list_recipes", "recipes"
 end

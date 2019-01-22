@@ -1,0 +1,10 @@
+<%= @list.name %>
+
+<ul>
+<% @list.recipes.each do |recipe| %>
+    <li><%= link_to recipe.name, recipe %></li>
+<% end %>
+</ul>
+
+<%= link_to "Edit List", edit_list_path %>
+<%= link_to "Delete List", @list, method: :delete %>

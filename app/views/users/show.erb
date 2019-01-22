@@ -1,9 +1,10 @@
 <h1> Profile for: </h1>
 
 <%= @user.username %>
+<%= link_to "Create List", new_list_path %>
 <ul>
-<% @user.recipes.each do |recipe| %>
-    <li><%= link_to recipe.name, recipe %></li>
+<% @user.lists.each do |list| %>
+    <li><%= link_to list.name, list %></li>
 <% end %>
 </ul>
 

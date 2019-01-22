@@ -1,0 +1,15 @@
+<h1>Change List Name</h1>
+
+<%= form_for @list do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.submit %>
+<% end %>
+
+<ul>
+<% @list.recipes.each do |recipe| %>
+    <li><%= link_to recipe.name, recipe %></li>
+    <%= link_to "Delete Recipe from List", list_recipe_url("#{ListRecipe.where(list_id: @list.id, recipe_id: recipe.id).ids[0]}") , method: :delete %>
+<% end %>
+</ul>

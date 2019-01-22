@@ -1,4 +1,7 @@
 <h1>Recipes</h1>
+<% if @user.admin == true %>
+ <%= link_to "Create Recipe", new_recipe_path %>
+<% end %>
 <ul>
 <% @recipes.each do |recipe| %>
   <li><%= link_to recipe.name, recipe %></li>

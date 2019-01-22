@@ -3,5 +3,14 @@
 <%= @recipe.ingredients %>
 <%= @recipe.recipe %>
 
-<%= link_to "Add Recipe from Recipe List", "/recipes/#{@recipe.id}/add_recipe" %>
-<%= link_to "Delete Recipe from Recipe List", "/recipes/#{@recipe.id}/delete_recipe" %>
+
+<%= form_tag "/list_recipes" do |f| %>
+  <%= hidden_field_tag :recipe_id, @recipe.id %>
+  <%= collection_select :list, :list_id, List.where(user_id: session[:user_id]), :id, :name %>
+  <%= submit_tag :'Add Recipe to List' %>
+<% end %>
+
+<% if @user.admin == true %>
+  <%= link_to "Edit Recipe", edit_recipe_path %>
+  <%= link_to "Delete Recipe", @recipe, method: :delete %>
+<% end %>

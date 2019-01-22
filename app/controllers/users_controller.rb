@@ -29,7 +29,11 @@ class UsersController < ApplicationController
     @user =  User.new
   end
   def create
-    @user = User.create(user_params)
+    if user_params[:admin]
+      @user = User.create(user_params)
+    else
+      @user = User.create(username: user_params[:username], password: user_params[:password], admin: false)
+    end
     return redirect_to @user unless @user.save
     session[:user_id] = @user.id
     redirect_to @user
@@ -50,6 +54,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation)
+    params.require(:user).permit(:username, :password, :password_confirmation, :admin)
   end
 end
