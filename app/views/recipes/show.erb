@@ -14,5 +14,26 @@
     <% end %>
   </div>
 </div>
-<%= @recipe.ingredients %>
-<%= @recipe.recipe %>
+<div class ="recipe-container">
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Ingredients
+  </div>
+  <ul class="list-group list-group-flush">
+    <% @recipe.ingredients.split(",").each do |ingredient| %>
+      <li class="list-group-item"><%= ingredient %></li>
+    <% end %>
+  </ul>
+</div>
+<div class="card">
+  <h5 class="card-header">Steps</h5>
+  <div class="card-body">
+    <ul>
+      <% @recipe.recipe.split(",").each do |recipe| %>
+        <li><%= recipe %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+</div>
