@@ -4,15 +4,18 @@
     <div class="container">
       <h1 class="display-4"><%= @user.username %></h1>
       <div class="btn btn-primary">
-        <%= link_to "Create List", new_list_path, :class => "btn btn-primary"%>
+        <%= link_to "Create List", new_list_path, :class => "btn btn-primary btn-sm"%>
       </div>
-
     </div>
   </div>
 
-  <ul>
+<div class="card-container">
   <% @user.lists.each do |list| %>
-      <li><%= link_to list.name, list %></li>
+    <div class="card list-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to list.name, list %></h5>
+      </div>
+    </div>
   <% end %>
-  </ul>
+</div>
 </div>

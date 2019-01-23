@@ -1,12 +1,25 @@
 <%= render 'shared/navbar'%>
 
-<%= @list.name %>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4"><%= @list.name %></h1>
+  </div>
+  <div class="btn btn-primary">
+    <%= link_to "Edit List", edit_list_path, :class => "btn btn-primary btn-sm "%>
+  </div>
+  <div class="btn btn-primary">
+    <%= link_to "Delete List", @list, method: :delete, :class => "btn btn-primary btn-sm "%>
+  </div>
+</div>
 
-<ul>
-<% @list.recipes.each do |recipe| %>
-    <li><%= link_to recipe.name, recipe %></li>
-<% end %>
-</ul>
-
-<%= link_to "Edit List", edit_list_path %>
-<%= link_to "Delete List", @list, method: :delete %>
+<div class="card-container">
+  <% @list.recipes.each do |recipe| %>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to recipe.name, recipe %></h5>
+        <h6 class="card-subtitle mb-2 text-muted">Time: <%= recipe.time %></h6>
+        <p class="card-text">Ingredients: <%= recipe.ingredients %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
