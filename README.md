@@ -1,24 +1,37 @@
-# README
+# Rails Cookbook
+A website I keep a catalogue of my recipes and where you can view and save my recipes.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Live Demo
+https://rails-cookbook.herokuapp.com/
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+These instructions will allow you to run this project in your local environment.
 
-* System dependencies
+Clone the repository onto your local machine.
 
-* Configuration
+```
+git clone git@github.com:mmacdonald1/hustler-frontend.git
+```
+Navigate into the file folder and install the dependencies.
 
-* Database creation
+```
+cd rails-cookbook
+bundle
+```
+Make sure you have postgresql installed. If you do then migrate and seed the database.
+```
+rails db:migrate
+rails db:seed
+```
+Run the file using npm and the project will come up in a new tab on your browser.
 
-* Database initialization
+```
+rails s
+```
+## Built With
+  * Ruby on Rails
+  * Bootstrap
 
-* How to run the test suite
+  
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
