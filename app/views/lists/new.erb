@@ -1,8 +1,14 @@
-<h1>Create List</h1>
+<%= render 'shared/navbar'%>
 
-<%= form_for @list do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-
-<%= f.submit %>
-<% end %>
+<div class="form-container">
+  <div class="card" style="width: 35rem;">
+    <%= form_for @list, :html => {:class => "form-horizontal center"} do |f| %>
+      <h4 class="form-title" >Create List</h4>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+        <%= f.submit "Create", class: "btn btn-primary form-button" %>
+    <% end %>
+  </div>
+</div>

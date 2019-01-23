@@ -1,13 +1,19 @@
-<h1> Profile for: </h1>
+<%= render 'shared/navbar'%>
+<div>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4"><%= @user.username %></h1>
+        <%= link_to "Create List", new_list_path, :class => "btn btn-primary"%>
+    </div>
+  </div>
 
-<%= @user.username %>
-<%= link_to "Create List", new_list_path %>
-<ul>
-<% @user.lists.each do |list| %>
-    <li><%= link_to list.name, list %></li>
-<% end %>
-</ul>
-
-<%= link_to "Edit User", edit_user_path %>
-<%= link_to "Find New Recipes", recipes_path %>
-<%= link_to "Logout", '/logout' %>
+<div class="card-container">
+  <% @user.lists.each do |list| %>
+    <div class="card list-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to list.name, list %></h5>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>

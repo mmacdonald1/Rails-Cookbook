@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'users#home'
   get '/login', to: 'users#index'
   post '/login', to: 'users#login'
   get '/logout', to: 'users#logout'

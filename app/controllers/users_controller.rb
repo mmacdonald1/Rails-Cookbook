@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update]
   before_action :require_login, only: [:show, :edit]
-
+  def home
+  end
   def index
     if session[:user_id]
       redirect_to "/users/#{session[:user_id]}"

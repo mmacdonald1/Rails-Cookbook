@@ -1,15 +1,26 @@
-<h1>Change List Name</h1>
+<%= render 'shared/navbar'%>
 
-<%= form_for @list do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
+<div class="form-container">
+  <div class="card" style="width: 35rem;">
+    <%= form_for @list, :html => {:class => "form-horizontal center"} do |f| %>
+      <h4 class="form-title" >Change List Name</h4>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+        <%= f.submit "Update", class: "btn btn-primary form-button" %>
+    <% end %>
+  </div>
+</div>
 
-<%= f.submit %>
-<% end %>
 
-<ul>
 <% @list.recipes.each do |recipe| %>
-    <li><%= link_to recipe.name, recipe %></li>
-    <%= link_to "Delete Recipe from List", list_recipe_url("#{ListRecipe.where(list_id: @list.id, recipe_id: recipe.id).ids[0]}") , method: :delete %>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to recipe.name, recipe %></h5>
+      <h6 class="card-subtitle mb-2 text-muted">Time: <%= recipe.time %></h6>
+      <p class="card-text">Ingredients: <%= recipe.ingredients %></p>
+      <%= link_to "Remove from #{@list.name}", list_recipe_url("#{ListRecipe.where(list_id: @list.id, recipe_id: recipe.id).ids[0]}") , method: :delete %>
+    </div>
+  </div>
 <% end %>
-</ul>
