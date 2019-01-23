@@ -2,11 +2,9 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">Recipes</h1>
-    <div class="btn btn-primary">
-      <% if @user.admin == true %>
-       <%= link_to "Create Recipe", new_recipe_path, :class => "btn btn-primary btn-sm" %>
-      <% end %>
-    </div>
+    <% if @user.admin == true %>
+         <%= link_to "Create Recipe", new_recipe_path, :class => "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
 

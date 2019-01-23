@@ -2,18 +2,14 @@
 
 <div class="form-container">
   <div class="card" style="width: 35rem;">
-    <form>
+    <%= form_for @list, :html => {:class => "form-horizontal center"} do |f| %>
       <h4 class="form-title" >Change List Name</h4>
-      <%= form_for @list do |f| %>
       <div class="form-group">
         <%= f.label :name %>
         <%= f.text_field :name %>
       </div>
-      <div class="btn btn-primary btn-sm form-button">
-        <%= f.submit "Create", class: "btn btn-primary btn-sm" %>
-      </div>
-      <% end %>
-    </form>
+        <%= f.submit "Update", class: "btn btn-primary form-button" %>
+    <% end %>
   </div>
 </div>
 
